@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>NoRefer</title>
+
+    <style>
+
+        html, body {
+            width: 400px;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .subtitle, hr {
+            color: gray;
+        }
+
+        #thebox {
+            height: 230px;
+            width: 90%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <p class="subtitle"><b>Enter one header and optional replacement value per line</b></p>
+
+        <br>
+
+        <p class="subtitle"><b>To block an HTTP header from your requests:</b></p>
+        <p class="subtitle">Referer</p>
+
+        <br>
+
+        <p class="subtitle"><b>To spoof an HTTP header in your requests:</b></p>
+        <p class="subtitle">Referer: https://somegarbagewebsite.com/</p>
+
+        <br>
+
+        <p class="subtitle">
+            <b>Exclude all headers starting with "Accept" (the # signals a Regular Expression):</b>
+        </p>
+        <p class="subtitle">#Accept.*</p>
+
+        <p class="subtitle">
+            <b>Make all headers starting with "Accept" a particular value:</b>
+        </p>
+        <p class="subtitle">#Accept.*: SomeValue</p>
+
+        <br><br>
+
+        <textarea id="thebox"></textarea>
+
+        <br><br>
+
+    </div>
+
+</body>
+
+<script type="text/javascript" src="main.js"></script>
+
+</html>
