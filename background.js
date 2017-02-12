@@ -49,7 +49,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
     }
 
     var tokens = getTokens(filter);
-    var noMatch = [];
     var newHeaders = [];
 
     if (Object.keys(tokens.regex).length) {
@@ -62,6 +61,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
                     if (tokens.regex[key].val) {
                         h.name = details.requestHeaders[i].name;
                         h.value = tokens.regex[key].val;
+                        details.requestHeaders[i].ignore = true;
                         newHeaders.push(h);
                     }
 
@@ -69,28 +69,28 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
                     break;
                 }
             }
-
-            if (match === false) {
-                noMatch.push(details.requestHeaders[i]);
-            }
         }
     }
 
-    for (var i = 0; i < noMatch.length; i++) {
+    for (var i = 0; i < details.requestHeaders.length; i++) {
         var h = {};
-        var headerMatch = tokens.normal[noMatch[i].name];
+        var headerMatch = tokens.normal[details.requestHeaders[i].name];
+
+        if (details.requestHeaders[i].ignore) {
+            continue;
+        }
 
         if (headerMatch) {
             if (headerMatch.val) {
-                h.name = noMatch[i].name;
+                h.name = details.requestHeaders[i].name;
                 h.value = headerMatch.val
                 newHeaders.push(h);
             }
 
-            delete tokens.normal[noMatch[i].name];
+            delete tokens.normal[details.requestHeaders[i].name];
 
         } else {
-            newHeaders.push(noMatch[i]);
+            newHeaders.push(details.requestHeaders[i]);
         }
     }
 
