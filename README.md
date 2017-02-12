@@ -1,6 +1,7 @@
 # NoRefer
 
-https://chrome.google.com/webstore/search/NoRefer
+https://chrome.google.com/webstore/detail/norefer/iokokaclomnglegfinhjjpmmgeacccki
+
 
 ##Enter one header and optional replacement value per line
 
