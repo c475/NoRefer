@@ -23,3 +23,18 @@ Referer: https://somegarbagewebsite.com/
 ```
 
 ###All regular expressions are generally permitted, except ones containing ':' because it breaks the parser
+
+
+##A full example config and explanation of what it does:
+
+```javascript
+Accept.*: SomeValue
+Referer
+User-Agent: CoolAgent4000
+Co.*
+```
+
+####1. All headers starting with "Accept" will have the value "SomeValue"
+####2. "Referer" will be removed from your request headers
+####3. "User-Agent" headers will have the value "CoolAgent4000"
+####4. All headers starting with "Co" will be removed from your request headers
