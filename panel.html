@@ -23,15 +23,51 @@
 
         .container {
             text-align: center;
+            width: 100%;
         }
 
-        .subtitle, hr {
+        .subtitle {
             color: gray;
         }
 
         #thebox {
+            margin-top: 20px;
             height: 230px;
             width: 90%;
+        }
+
+        #info {
+            display: none;
+            width: 90%;
+        }
+
+        #help {
+            color: blue;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .code-box, .explanation {
+            background-color: #f4f4f4;
+            font-family: courier;
+            padding: 10px 0px 10px 0px;
+            text-align: left;
+            width: 90%;
+            padding-left: 3%;
+            padding-right: 3%;
+            margin: 0 auto;
+        }
+
+        .explanation {
+            background-color: #ffffff;
+            font-family: sans-serif;
+        }
+
+        hr {
+            color: gray;
+            width: 92%;
+            text-align: center;
         }
 
     </style>
@@ -42,35 +78,75 @@
 
     <div class="container">
 
-        <p class="subtitle"><b>Enter one header and optional replacement value per line</b></p>
-
-        <br>
-
-        <p class="subtitle"><b>To block an HTTP header from your requests:</b></p>
-        <p class="subtitle">Referer</p>
-
-        <br>
-
-        <p class="subtitle"><b>To spoof an HTTP header in your requests:</b></p>
-        <p class="subtitle">Referer: https://somegarbagewebsite.com/</p>
-
-        <br>
-
-        <p class="subtitle">
-            <b>Exclude all headers starting with "Accept" (the # signals a Regular Expression):</b>
-        </p>
-        <p class="subtitle">#Accept.*</p>
-
-        <p class="subtitle">
-            <b>Make all headers starting with "Accept" a particular value:</b>
-        </p>
-        <p class="subtitle">#Accept.*: SomeValue</p>
-
-        <br><br>
-
         <textarea id="thebox"></textarea>
 
         <br><br>
+
+        <p id="help">Show help</p>
+
+        <div id="info">
+
+            <br><hr>
+
+            <h1>NoRefer</h1>
+
+            <a href="https://github.com/c475/NoRefer">https://github.com/c475/NoRefer</a>
+
+            <h2>Enter one header and optional replacement value per line</h2>
+
+            <h4>To block an HTTP header from your requests:</h4>
+
+            <div class="code-box">
+                Referer
+            </div>
+
+            <br><br>
+
+            <h4>To spoof an HTTP header in your requests:</h4>
+
+            <div class="code-box">
+                Referer: https://somegarbagewebsite.com/
+            </div>
+
+            <br><br>
+
+            <h4>Exclude all headers starting with "Accept" (the # signals a Regular Expression):</h4>
+
+            <div class="code-box">
+                #Accept.*
+            </div>
+
+            <br><br>
+
+            <h4>Make all headers starting with "Accept" a particular value:</h4>
+
+            <div class="code-box">
+                #Accept.*: SomeValue
+            </div>
+
+            <br><br>
+
+            <h3>All regular expressions are generally permitted, except ones containing ':' because it breaks the parser<h3>
+
+            <h4>A full example config and explanation of what it does:</h4>
+
+            <div class="code-box">
+                Accept.*: SomeValue<br>
+                Referer<br>
+                User-Agent: CoolAgent4000<br>
+                Co.*
+            </div>
+
+            <div class="explanation">
+                <p>1. All headers starting with "Accept" will have the value "SomeValue"</p>
+                <p>2. "Referer" will be removed from your request headers</p>
+                <p>3. "User-Agent" headers will have the value "CoolAgent4000"</p>
+                <p>4. All headers starting with "Co" will be removed from your request headers</p>
+            </div>
+
+            <br><br>
+
+        </div>
 
     </div>
 

@@ -98,7 +98,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
         if (tokens.normal[key].val !== null) {
             newHeaders.push({
                 name: key,
-                value: tokens[key].val
+                value: tokens.normal[key].val
             });
         }
     }
