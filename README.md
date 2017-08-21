@@ -31,10 +31,10 @@ Referer: https://somegarbagewebsite.com/
 ## A full example config and explanation of what it does:
 
 ```javascript
-Accept.*: SomeValue
+#Accept.*: SomeValue
 Referer
 User-Agent: CoolAgent4000
-Co.*
+#Co.*
 ```
 
 #### 1. All headers starting with "Accept" will have the value "SomeValue"
