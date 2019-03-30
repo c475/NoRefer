@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "NoRefer",
   "description": "Set and exclude HTTP headers on all requests",
-  "version": "1.4",
+  "version": "1.5",
   "permissions": [
     "webRequest",
     "webRequestBlocking",

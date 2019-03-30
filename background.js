@@ -116,6 +116,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function (details) {
 }, [
 
     'blocking',
-    'requestHeaders'
+    'requestHeaders',
+    'extraHeaders'
 
 ]);
